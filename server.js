@@ -91,14 +91,6 @@ app.get("/", (req, res) => {
 app.post("/update", (req, res) => {
   const key = req.headers["x-murdock-key"];
   if (key !== SECRET) return res.status(401).json({ ok: false });
-  {
-  "seq": 1,
-  "state": 0,
-  "min_mm": 0,
-  "grid": [0,0,0, ... 512 values ...],
-  "msg": "Waiting..."
-}
-
 
   latest = req.body;
   broadcast(latest);
