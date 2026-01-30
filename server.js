@@ -39,8 +39,8 @@ app.get("/", (req, res) => {
   <title>MURDOCK – Private Dashboard</title>
   <style>
     body { font-family: Arial; margin: 20px; }
-    #grid { display: grid; grid-template-columns: repeat(8, 32px); gap: 4px; }
-    .cell { width: 32px; height: 32px; background: #ddd; border-radius: 6px;
+    #grid { display: grid; grid-template-columns: repeat(64, 32px); gap: 4px; }
+    .cell { width: 256px; height: 256px; background: #ddd; border-radius: 6px;
             display:flex; align-items:center; justify-content:center; font-size:10px; }
     .safe { background:#9ae6b4; }
     .warn { background:#ffd93d; }
@@ -91,6 +91,14 @@ app.get("/", (req, res) => {
 app.post("/update", (req, res) => {
   const key = req.headers["x-murdock-key"];
   if (key !== SECRET) return res.status(401).json({ ok: false });
+  {
+  "seq": 1,
+  "state": 0,
+  "min_mm": 0,
+  "grid": [0,0,0, ... 512 values ...],
+  "msg": "Waiting..."
+}
+
 
   latest = req.body;
   broadcast(latest);
